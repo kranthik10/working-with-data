@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Fetching multiple images
+    </h1>
+ <script >
+
+console.log("Array of images");
+
+const images = [
+    '../images/140149.jpg',
+    '../images/140149 copy.jpg',
+    '../images/140149 copy 2.jpg'
+]
+gettingImages()
+
+async function gettingImages(){
+    for (let image of images){
+        const respone = await fetch(image);
+        const blob = await respone.blob()
+        const setImage = document.createElement('img');
+        setImage.src = URL.createObjectURL(blob);
+        setImage.width = '480';
+        document.body.append(setImage);
+    }
+}
+
+
+
+
+ </script>
+</body>
+</html>
